@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "build": "./node_modules/.bin/tsc",
+    "script:simple": "ts-node scripts/simple_game.ts"
+  },
+  "dependencies": {
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  }
+}
