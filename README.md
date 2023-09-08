@@ -1,10 +1,26 @@
+# Bowling Kata Development-Driven Testing
+
+The purpose of this project is to demonstrate the difficulty of testing an application after it's finished. The kata selected is scoring a bowling game. (Details are listed in the *Requirements* section.) It is a simple module with a small interface that can be plugged into a user interface. For this purpose, I've included scripts for cases that I used to verify the code.
+
+This is not what I consider a **good** solution to the kata, but it does seem to work well enough. I do not look forward to fixing any bugs that are discovered.
+
 ## Running
 The file *bowling_game.ts* exports a function `BowlingGame()` that returns a ScoreCard to keep track of a single players score throughout a game of bowling. Scripts are provided for several scoring scenarios that demonstrate the functional requirement described below. This section describes those scripts and the commands needed to run them.
 
 #### Simple Game
 A simple game is one with all open frames. As described in the rules below, an open frame is one in which there are still pins standing after 2 throws. There are only 2 throws allowed in the 10th frame. This is the easiest scoring to implement, and the score is always resolvable.
 
-Run this script with `npm run script:simple`. 
+Run this script with `npm run script:simple`.
+
+#### Spares Game
+A spares game is one with all spare frames. As described in the rules below, a spare is when there are no pins standing after 2 throws. A spare in the 10th frame allows access to the 3rd throw. This is the 2nd easiest scoring to implement. The score is not resolvable until after the 1st throw following the spare.
+
+Run this script with `npm run script:spares`.
+
+#### Strikes Game
+A strikes game is one in which every throw knocks down all 10 pins. If the 1st throw in the 10th frame is a strike, then 2 more throws are required. This is the hardest scoring to implement. The score is not resolvable until after the next 2 throws following the strike.
+
+Run this script with `npm run script:strikes`. 
 
 ## Requirements
 Create simple module that tracks throws for one bowler and reports on the status of the game in progress.
