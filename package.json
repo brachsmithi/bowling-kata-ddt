@@ -2,7 +2,8 @@
   "scripts": {
     "build": "./node_modules/.bin/tsc",
     "script:simple": "ts-node scripts/simple_game.ts",
-    "script:spares": "ts-node scripts/spare_game.ts"
+    "script:spares": "ts-node scripts/spare_game.ts",
+    "script:strikes": "ts-node scripts/strike_game.ts"
   },
   "dependencies": {
     "typescript": "^5.2.2"
