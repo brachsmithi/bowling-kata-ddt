@@ -13,19 +13,20 @@ class ScoreCard {
     this.frameThrows = [[0, 0]]; // index 0 will not be used
   }
 
-  pinCount(count: number) {
+  pinCount(count: number): string | undefined {
     if (this.over) {
-      this.report();
+      return this.report();
     } else {
       console.info(`knocked down ${count} pins`);
       if (this.throw === 1) {
         this.frameThrows[this.frame] = [ count ];
-        this.report();
+        const report = this.report();
         if (count === 10 && this.frame < 10) {
           this.frame += 1;
         } else {
           this.throw = 2;
         }
+        return report;
       } else if (this.throw === 2) {
         this.frameThrows[this.frame] = [ this.frameThrows[this.frame][0], count ];
         if (this.frame === 10) {
@@ -38,11 +39,12 @@ class ScoreCard {
               this.score = curScore as number;
             }
           }
-          this.report();
+          return this.report();
         } else {
-          this.report();
+          const report = this.report();
           this.frame += 1; // increment frame after checking if last...
           this.throw = 1;
+          return report;
         }
       } else if (this.throw === 3) {
         const curScore = this.currentScore();
@@ -50,16 +52,20 @@ class ScoreCard {
           this.score = (curScore as number) + count;
         }
         this.over = true;
-        this.report();
+        return this.report();
       }
     }
   }
 
-  private report() {
+  private report(): string {
     if (this.over) {
-      console.info(`Game is over. No more throws allowed. Final score is ${ this.score }`);
+      const message = `Game is over. No more throws allowed. Final score is ${ this.score }`;
+      console.info(message);
+      return message;
     } else {
-      console.info(`Frame: ${this.frame}, throw: ${this.throw}, score: ${this.currentScore()}`);
+      const message = `Frame: ${this.frame}, throw: ${this.throw}, score: ${this.currentScore()}`;
+      console.info(message);
+      return message;
     }
   }
 
